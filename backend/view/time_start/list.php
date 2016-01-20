@@ -49,11 +49,11 @@ $list = $model->getListTimeByStatus($status, $offset, LIMIT);
                         <td><?php echo $row['time_start']; ?></td>                        
                         <td><?php echo date('d-m-Y',$row['creation_time']); ?></td>                        
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=time_start&act=form&time_id=<?php echo $row['time_id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=time_start&act=form&time_id=<?php echo $row['time_id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['time_start']; ?>" id="<?php echo $row['time_id']; ?>" mod="time_start" class="link_delete" >    
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['time_start']; ?>" id="<?php echo $row['time_id']; ?>" mod="time_start" class="btn btn-sm btn-danger link_delete" >    
+                                Xóa
                             </a>    
                             
                         </td>

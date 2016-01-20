@@ -172,13 +172,13 @@ $arrListNhaxe = $modelNhaxe->getListNhaxe('',-1, -1, -1);
 
                             <a href="index.php?mod=place&act=form&place_id=<?php echo $row['place_id']; ?>">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
 
-                            <a href="javascript:;" alias="<?php echo $row['place_name_vi']; ?>" id="<?php echo $row['place_id']; ?>" mod="place" class="link_delete" >    
+                            <a href="javascript:;" alias="<?php echo $row['place_name_vi']; ?>" id="<?php echo $row['place_id']; ?>" mod="place" class="btn btn-sm btn-danger link_delete" >    
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a>    
 

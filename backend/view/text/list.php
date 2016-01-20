@@ -48,11 +48,11 @@ $list = $model->getList('text', $offset, $limit);
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['text']; ?> </td>
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=text&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=text&act=form&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;"  id="<?php echo $row['id']; ?>" mod="text" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;"  id="<?php echo $row['id']; ?>" mod="text" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

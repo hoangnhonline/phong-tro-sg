@@ -94,11 +94,11 @@ $arrList = $model->getListNhaxe($keyword,$hot,$offset, $limit);
                             </a>
                         </td>                     
                         <td style="white-space:nowrap">                            
-                            <a href="index.php?mod=nhaxe&act=form&nhaxe_id=<?php echo $row['nhaxe_id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=nhaxe&act=form&nhaxe_id=<?php echo $row['nhaxe_id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['nhaxe_name_vi']; ?>" id="<?php echo $row['nhaxe_id']; ?>" mod="nhaxe" class="link_delete" >    
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['nhaxe_name_vi']; ?>" id="<?php echo $row['nhaxe_id']; ?>" mod="nhaxe" class="btn btn-sm btn-danger link_delete" >    
+                                Xóa
                             </a>    
                             
                         </td>

@@ -50,10 +50,10 @@ $list = $model->getListLegalByStatus($status, $offset, LIMIT);
                         <td><?php echo date('d-m-Y',$row['creation_time']); ?></td>
                         <td style="white-space:nowrap">
                             <a href="index.php?mod=legal&act=form&legal_id=<?php echo $row['legal_id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['legal_name']; ?>" id="<?php echo $row['legal_id']; ?>" mod="legal" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['legal_name']; ?>" id="<?php echo $row['legal_id']; ?>" mod="legal" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

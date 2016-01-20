@@ -69,16 +69,16 @@ $arrList = $model->getList("pages", -1 , -1);
                         <td><b><?php echo $row['page_alias'];?>.html</b></td>
                         <td style="white-space:nowrap">                            
                         
-                            <a href="index.php?mod=page&act=form&id=<?php echo $row['id']; ?>" title="Click để chỉnh sửa">
+                            <a href="index.php?mod=page&act=form&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
                         
                         
-                            <a title="Click để xóa" href="javascript:;" alias="<?php echo $row['page_name']; ?>" id="<?php echo $row['id']; ?>" mod="pages" class="link_delete" >    
+                            <a title="Click để xóa" href="javascript:;" alias="<?php echo $row['page_name']; ?>" id="<?php echo $row['id']; ?>" mod="pages" class="btn btn-sm btn-danger link_delete" >    
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a>    
                         

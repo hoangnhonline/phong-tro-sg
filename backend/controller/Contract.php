@@ -80,11 +80,15 @@ if($_POST['h_price_6'] == 0){
 	
 	$contractArr['updated_at'] = time();
 
-	$contractArr['status'] = 1;
+	$contractArr['status'] = $_POST['status'];
 	
 	if($contract_id > 0){
 		$contractArr['id'] = $contract_id;
 		$model->update('contract', $contractArr);
+		if($contractArr['status'] == 2){
+			$model->update('objects', array('id' => $contractArr['object_id'], 'status' => 1));	
+			$model->update('contract', array('id' => $contract_id, 'end_date' => date('Y-m-d'))); 
+		}
 	}else{
 		$contractArr['created_at'] = time();
 		$contract_id = $model->insert('contract', $contractArr);

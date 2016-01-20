@@ -88,15 +88,15 @@ $list = $model->getList($table, $offset, LIMIT);
                         ?></td>                      
                         <td style="white-space:nowrap">
 
-                            <a href="index.php?mod=user&act=form&id=<?php echo $row['id']; ?>">
+                            <a href="index.php?mod=user&act=form&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
 
-                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="users" class="link_delete" >    
+                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="users" class="btn btn-sm btn-danger link_delete" >    
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a>    
 

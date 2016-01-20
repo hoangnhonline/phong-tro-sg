@@ -136,17 +136,17 @@ $list = $model->getList($table, $offset, LIMIT, $arrCustom);
                         <td align="center"><?php echo date('d-m-Y H:i',$row['created_at']); ?></td>
                         <td align="center"><?php echo date('d-m-Y H:i',$row['updated_at']); ?></td>
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=house&act=list-chi-phi&month=-1&year=-1&house_id=<?php echo $row['id']; ?>" title="Thêm chi phí">
+                            <a class="btn btn-sm btn-success" href="index.php?mod=house&act=list-chi-phi&month=-1&year=-1&house_id=<?php echo $row['id']; ?>" title="Thêm chi phí">
                                 Chi phí
                             </a>&nbsp;
-                            <a href="index.php?mod=house&act=view&id=<?php echo $row['id']; ?>" title="Xem chi tiết">
-                                <span class="glyphicon glyphicon-th-list"></span>
+                            <a class="btn btn-sm btn-info" href="index.php?mod=house&act=view&id=<?php echo $row['id']; ?>" title="Xem chi tiết">
+                                Xem chi tiết
                             </a>&nbsp;
-                            <a href="index.php?mod=house&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a class="btn btn-sm btn-warning" href="index.php?mod=house&act=form&id=<?php echo $row['id']; ?>">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="house" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a class="btn btn-sm btn-danger" href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="house" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

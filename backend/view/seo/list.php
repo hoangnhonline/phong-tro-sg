@@ -67,15 +67,15 @@ $list = $model->getList('seo', -1, -1);
                         <td width="20%"><?php echo $row['meta_keyword']; ?></td>                     
                         <td style="white-space:nowrap">                            
                         
-                            <a href="index.php?mod=seo&act=form&id=<?php echo $row['id']; ?>" title="Click để chỉnh sửa">
+                            <a href="index.php?mod=seo&act=form&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
                         
-                            <a title="Click để xóa" href="javascript:;" alias="<?php echo $row['page_name']; ?>" id="<?php echo $row['id']; ?>" mod="seo" class="link_delete" >    
+                            <a title="Click để xóa" href="javascript:;" alias="<?php echo $row['page_name']; ?>" id="<?php echo $row['id']; ?>" mod="seo" class="btn btn-sm btn-danger link_delete" >    
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a> 
 

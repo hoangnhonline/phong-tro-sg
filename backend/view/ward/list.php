@@ -109,11 +109,11 @@ $list = $model->getList($table, $offset, LIMIT, $arrCustom);
                         <td align="center"><?php echo date('d-m-Y H:i',$row['created_at']); ?></td>
                         <td align="center"><?php echo date('d-m-Y H:i',$row['updated_at']); ?></td>
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=ward&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=ward&act=form&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="ward" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="ward" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

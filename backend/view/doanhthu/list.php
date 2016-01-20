@@ -28,7 +28,9 @@ $list = $model->getList($table, $offset, $limit, array('contract_id' => $contrac
 ?>
 <div class="row">
     <div class="col-md-12">
+        <?php if($detail['status']==1){ ?>
     <button class="btn btn-primary btn-sm right" onclick="location.href='index.php?mod=doanhthu&act=form&contract_id=<?php echo $contract_id; ?>'">Thêm mới doanh thu tháng</button>
+    <?php } ?>
          <div class="box-header">
                 <h3 class="box-title">Chi tiết doanh thu của HD : <?php echo $detail['code']?></h3>
             </div><!-- /.box-header -->
@@ -66,16 +68,18 @@ $list = $model->getList($table, $offset, $limit, array('contract_id' => $contrac
                         <td style="text-align:right"><?php echo number_format($row['tien_nhan']); ?></td>
                         <td style="text-align:right"><?php echo number_format($row['cong_no']); ?></td>                        
                         <td style="white-space:nowrap">
-                            <a target="_blank" href="print.php?id=<?php echo $row['id']; ?>&contract_id=<?php echo $contract_id; ?>">
-                                <span class="glyphicon glyphicon-print"</span>
-                            </a>&nbsp;&nbsp;&nbsp;
-                            <a href="index.php?mod=doanhthu&act=view&id=<?php echo $row['id']; ?>&contract_id=<?php echo $contract_id; ?>" title="Xem chi tiết">
-                                <span class="glyphicon glyphicon-th-list"></span>
-                            </a>&nbsp;&nbsp;
-                            <a href="index.php?mod=doanhthu&act=edit&id=<?php echo $row['id']; ?>&contract_id=<?php echo $contract_id; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a class="btn btn-sm btn-success" target="_blank" href="print.php?id=<?php echo $row['id']; ?>&contract_id=<?php echo $contract_id; ?>">
+                                In
+                            </a>
+                            <?php if($detail['status']==1){ ?>
+                            <a class="btn btn-sm btn-warning" href="index.php?mod=doanhthu&act=view&id=<?php echo $row['id']; ?>&contract_id=<?php echo $contract_id; ?>" title="Xem chi tiết">
+                                Chỉnh sửa
+                            </a>
+                            <a class="btn btn-sm btn-danger" href="index.php?mod=doanhthu&act=edit&id=<?php echo $row['id']; ?>&contract_id=<?php echo $contract_id; ?>">
+                                Xóa
                             </a>                            
 
+<?php } ?>
                         </td>
                     </tr>
                     <?php } }  ?>

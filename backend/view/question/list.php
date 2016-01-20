@@ -76,15 +76,15 @@ $arrList = $model->getListQuestion();
                        
                         <td style="white-space:nowrap">                            
 
-                            <a href="index.php?mod=question&act=form&question_id=<?php echo $row['question_id']; ?>">
+                            <a href="index.php?mod=question&act=form&question_id=<?php echo $row['question_id']; ?>" class="btn btn-sm btn-warning">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
 
-                            <a href="javascript:;" alias="<?php echo $row['content']; ?>" id="<?php echo $row['question_id']; ?>" mod="question" class="link_delete" >    
+                            <a href="javascript:;" alias="<?php echo $row['content']; ?>" id="<?php echo $row['question_id']; ?>" mod="question" class="btn btn-sm btn-danger link_delete" >    
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a>    
 

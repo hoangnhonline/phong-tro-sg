@@ -255,15 +255,15 @@ $arrList = $modelPost->getListPost($district_id,$type_id,$estate_type_id,$direct
 
                         <td style="white-space:nowrap">
 
-                            <a href="index.php?mod=post&act=form&post_id=<?php echo $row['post_id']; ?>">
+                            <a href="index.php?mod=post&act=form&post_id=<?php echo $row['post_id']; ?>" class="btn btn-sm btn-warning">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
 
-                            <a href="javascript:;" alias="<?php echo $row['post_title']; ?>" id="<?php echo $row['post_id']; ?>" mod="post" class="link_delete" >
+                            <a href="javascript:;" alias="<?php echo $row['post_title']; ?>" id="<?php echo $row['post_id']; ?>" mod="post" class="btn btn-sm btn-danger link_delete" >
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a>
 

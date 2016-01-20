@@ -135,7 +135,7 @@ $modArr = $model->getList('users', -1, -1, array('level' => 2));
                         <td style="text-align:right"><?php echo number_format($row['congno']); ?></td>                        
                         
                         <td style="white-space:nowrap">
-                            <a target="_blank" href="index.php?mod=reportdoanhthu&act=month&month=<?php echo $row['month']; ?>&year=<?php echo $row['year']?><?php echo ($user_id > 0 && $_SESSION['level']==1) ? '&user_id='.$user_id : "" ;?>">
+                            <a class="btn btn-sm btn-info" target="_blank" href="index.php?mod=reportdoanhthu&act=month&month=<?php echo $row['month']; ?>&year=<?php echo $row['year']?><?php echo ($user_id > 0 && $_SESSION['level']==1) ? '&user_id='.$user_id : "" ;?>">
                                 Chi tiết
                             </a>
                         </td>

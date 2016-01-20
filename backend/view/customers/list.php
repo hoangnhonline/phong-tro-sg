@@ -65,11 +65,11 @@ $list = $model->getList($table, $offset, LIMIT, $arrCustom);
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['address'] ?></td>                        
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=customers&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a class="btn btn-sm btn-warning" href="index.php?mod=customers&act=form&id=<?php echo $row['id']; ?>">
+                                
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="customers" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a class="btn btn-sm btn-danger" href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="customers" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

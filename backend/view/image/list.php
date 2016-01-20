@@ -49,8 +49,8 @@ $list = $model->getListImageByNhaxe($nhaxe_id, $offset, 8);
                         <img src="<?php echo "../".$row['image_url']; ?>" height="107" />
                         <br />
                         <p>
-                            <a href="javascript:;" alias="ảnh" id="<?php echo $row['image_id']; ?>" mod="image" class="link_delete" >    
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="ảnh" id="<?php echo $row['image_id']; ?>" mod="image" class="btn btn-sm btn-danger link_delete" >    
+                                Xóa
                             </a>    
                         </p>
                     </div>

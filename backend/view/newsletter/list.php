@@ -48,8 +48,8 @@ $list = $model->getListContentByStatus(1, $status, $offset, LIMIT);
                         <td><?php echo $row['email']; ?></td>                        
                         <td><?php echo date('d-m-Y H:i',$row['creation_time']); ?></td>                        
                         <td style="white-space:nowrap;text-align:center">                            
-                            <a href="javascript:;" alias="<?php echo $row['email']; ?>" id="<?php echo $row['id']; ?>" mod="newsletter" class="link_delete" >    
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['email']; ?>" id="<?php echo $row['id']; ?>" mod="newsletter" class="btn btn-sm btn-danger link_delete" >    
+                                Xóa
                             </a>    
                             
                         </td>

@@ -44,10 +44,10 @@ $list = $model->getList($table, $offset, LIMIT);
                         <td><?php echo date('d-m-Y',$row['created_at']); ?></td>
                         <td style="white-space:nowrap">
                             <a href="index.php?mod=expense&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="expense" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="expense" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

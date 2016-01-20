@@ -55,12 +55,12 @@ $arrList = $model->getListBannerByPosition($position_id);
                          
                             <td width="1%" style="white-space:nowrap;text-align:center">
 
-                                <a href="index.php?mod=banner&act=form&id=<?php echo $value['id']; ?>&position_id=<?php echo $position_id?>" title="Click để chỉnh sửa">
-                                    <i class="fa fa-fw fa-edit"></i>
+                                <a href="index.php?mod=banner&act=form&id=<?php echo $value['id']; ?>&position_id=<?php echo $position_id?>" class="btn btn-sm btn-warning">
+                                    Chỉnh sửa
                                 </a>
                                 
-                                <a title="Click để xóa" href="javascript:;" alias="<?php echo $value['name_event']; ?>" id="<?php echo $value['id']; ?>" mod="banner" class="link_delete" >    
-                                    <i class="fa fa-fw fa-trash-o"></i>
+                                <a title="Click để xóa" href="javascript:;" alias="<?php echo $value['name_event']; ?>" id="<?php echo $value['id']; ?>" mod="banner" class="btn btn-sm btn-danger link_delete" >    
+                                    Xóa
                                 </a>  
                                 
                             </td>

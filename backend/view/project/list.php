@@ -172,13 +172,13 @@ $arrList = $modelPost->getListProject($hot,$district_id,$project_type_id,$offset
 
                             <a href="index.php?mod=project&act=form&project_id=<?php echo $row['project_id']; ?>">
 
-                                <i class="fa fa-fw fa-edit"></i>
+                                Chỉnh sửa
 
                             </a>
 
-                            <a href="javascript:;" alias="<?php echo $row['project_name']; ?>" id="<?php echo $row['project_id']; ?>" mod="project" class="link_delete" >
+                            <a href="javascript:;" alias="<?php echo $row['project_name']; ?>" id="<?php echo $row['project_id']; ?>" mod="project" class="btn btn-sm btn-danger link_delete" >
 
-                                <i class="fa fa-fw fa-trash-o"></i>
+                                Xóa
 
                             </a>
 

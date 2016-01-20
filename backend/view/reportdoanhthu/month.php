@@ -123,8 +123,8 @@ $modArr = $model->getList('users', -1, -1, array('level' => 2));
                         <td style="text-align:right"><?php echo number_format($row['doanhthu']); ?></td>
                         <td style="text-align:right"><?php echo number_format($row['congno']); ?></td>                        
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=doanhthu&act=view&id=<?php echo $row['id']; ?>&contract_id=<?php echo $row['contract_id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=doanhthu&act=view&id=<?php echo $row['id']; ?>&contract_id=<?php echo $row['contract_id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>                          
 
                         </td>

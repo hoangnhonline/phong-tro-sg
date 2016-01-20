@@ -187,25 +187,25 @@ $list = $model->getList($table, $offset, LIMIT, $arrCustom);
                         <td style="white-space:nowrap">
                             
                             <?php if($row['status']==1){ ?>
-                            <a title="Tạo hợp đồng" href="index.php?mod=contract&act=form&object_type=1&object_id=<?php echo $row['id']; ?>">
-                                <i class="glyphicon glyphicon-plus"></i>
-                            </a>&nbsp;&nbsp;
+                            <a class="btn btn-sm btn-primary" title="Tạo hợp đồng" href="index.php?mod=contract&act=form&object_type=1&object_id=<?php echo $row['id']; ?>">
+Tạo HĐ
+                            </a>
                             <?php }else{
                             ?>
-                            <a target="_blank" title="Xem hợp đồng" href="index.php?mod=contract&act=edit&id=<?php echo $contract_id; ?>">
-                                <i class="glyphicon glyphicon-book"></i>
-                            </a>&nbsp;
+                            <a class="btn btn-sm btn-info" target="_blank" title="Xem hợp đồng" href="index.php?mod=contract&act=edit&id=<?php echo $contract_id; ?>">
+Xem HĐ
+                            </a>
                             <?php    
                             } 
                             ?>
-                            <a href="index.php?mod=room&act=view&id=<?php echo $row['id']; ?>" title="Xem chi tiết">
-                                <span class="glyphicon glyphicon-th-list"></span>
+                            <a class="btn btn-sm btn-success" href="index.php?mod=room&act=view&id=<?php echo $row['id']; ?>" title="Xem chi tiết">Xem chi tiết
+
                             </a>&nbsp;
-                            <a href="index.php?mod=room&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a  class="btn btn-sm btn-warning" href="index.php?mod=room&act=form&id=<?php echo $row['id']; ?>">
+Chỉnh sửa
                             </a>
-                            <a  href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="room" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a  class="btn btn-sm btn-danger" href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="room" class="btn btn-sm btn-danger link_delete" >
+Xóa
                             </a>
 
                         </td>

@@ -49,11 +49,11 @@ $list = $model->getListPtypeByStatus($status, $offset, LIMIT);
                         <td><?php echo $row['project_type_name']; ?></td>
                         <td><?php echo date('d-m-Y',$row['creation_time']); ?></td>
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=project_type&act=form&project_type_id=<?php echo $row['project_type_id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=project_type&act=form&project_type_id=<?php echo $row['project_type_id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['project_type_name']; ?>" id="<?php echo $row['project_type_id']; ?>" mod="project_type" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['project_type_name']; ?>" id="<?php echo $row['project_type_id']; ?>" mod="project_type" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
 
                         </td>

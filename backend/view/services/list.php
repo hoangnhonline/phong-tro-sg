@@ -64,12 +64,12 @@ $list = $model->getList($table, $offset, LIMIT);
                         <td align="center"><?php echo date('d-m-Y H:i',$row['created_at']); ?></td>
                         <td align="center"><?php echo date('d-m-Y H:i',$row['updated_at']); ?></td>
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=services&act=form&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a href="index.php?mod=services&act=form&id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">
+                                Chỉnh sửa
                             </a>
                             <?php if($row['id'] > 2){ ?>
-                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="services" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
+                            <a href="javascript:;" alias="<?php echo $row['name']; ?>" id="<?php echo $row['id']; ?>" mod="services" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
                             </a>
                             <?php } ?>
                         </td>

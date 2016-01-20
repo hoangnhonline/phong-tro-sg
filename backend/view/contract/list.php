@@ -88,7 +88,12 @@ $list = $model->getList($table, $offset, LIMIT, $arrCustom);
                         <td>
                             <a href="index.php?mod=contract&act=edit&id=<?php echo $row['id']; ?>">
                                 <?php echo $row['code']; ?>
-                            </a>                       
+                            </a>   
+<?php if($row['status'] == 2){ ?>
+<span class="label label-danger">Đã kết thúc</span>                       
+<?php }else{ ?>
+<span class="label label-info">Đang hiệu lực</span>                       
+<?php } ?>                    
                             <br />     
                             <?php
                             $detail = $model->getDetail("objects", $row['object_id']);                            
@@ -110,15 +115,15 @@ $list = $model->getList($table, $offset, LIMIT, $arrCustom);
                         <td style="text-align:center"><?php echo date('d-m-Y', strtotime($row['start_date'])); ?></td>
                         <td style="text-align:center"><?php echo date('d-m-Y', strtotime($row['end_date'])); ?></td>                        
                         <td style="white-space:nowrap">
-                            <a href="index.php?mod=doanhthu&act=list&contract_id=<?php echo $row['id']; ?>" title="xem doanh thu">
-                                <i class="fa fa-fw fa-book"></i>
+                            <a class="btn btn-sm btn-info" href="index.php?mod=doanhthu&act=list&contract_id=<?php echo $row['id']; ?>" title="xem doanh thu">
+                                Xem doanh thu
                             </a>
-                            <a href="index.php?mod=contract&act=edit&id=<?php echo $row['id']; ?>">
-                                <i class="fa fa-fw fa-edit"></i>
+                            <a class="btn btn-sm btn-warning"  href="index.php?mod=contract&act=edit&id=<?php echo $row['id']; ?>">
+                                Chỉnh sửa
                             </a>
-                            <a href="javascript:;" alias="<?php echo $row['code']; ?>" id="<?php echo $row['id']; ?>" mod="contract" class="link_delete" >
-                                <i class="fa fa-fw fa-trash-o"></i>
-                            </a>
+                            <!--<a  class="btn btn-sm btn-danger"  href="javascript:;" alias="<?php echo $row['code']; ?>" id="<?php echo $row['id']; ?>" mod="contract" class="btn btn-sm btn-danger link_delete" >
+                                Xóa
+                            </a>-->
 
                         </td>
                     </tr>

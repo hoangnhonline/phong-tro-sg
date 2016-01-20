@@ -57,7 +57,7 @@ if($object_id > 0 && $object_type > 0){
             <input type="hidden" name="object_id" value="<?php echo $object_id; ?>">
             <input type="hidden" name="object_type" value="<?php echo $object_type; ?>">
         <div style="clear:both;margin-bottom:10px"></div>
-
+        <input type="hidden" value="1" name="status" />
          <div class="box-header">
 
             <h3 class="box-title"><?php echo (isset($id) && $id > 0) ? "Cập nhật" : "Tạo mới" ?> hợp đồng </h3>
