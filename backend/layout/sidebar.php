@@ -66,12 +66,13 @@
                 <i class="fa fa-th"></i> <span>Khách hàng</span>
             </a>
         </li>
+<?php if($_SESSION['level']==1){ ?>
         <li class="active">
             <a href="<?php echo BASE_URL; ?>page&act=list">
                 <i class="fa fa-th"></i> <span>Trang</span>
             </a>
         </li>
-        <?php if($_SESSION['level']==1){ ?>
+        
         <li class="active">
             <a href="<?php echo BASE_URL; ?>user&act=list">
                 <i class="fa fa-th"></i> <span>Mod</span>
@@ -120,6 +121,7 @@
                 <a href="<?php echo BASE_URL; ?>price&act=list">
                     <i class="fa fa-circle-o"></i> <span>Khoảng giá</span> <!--<small class="badge pull-right bg-green">new</small>-->            </a>
             </li>
+<?php if($_SESSION['level']==1){ ?>
             <li>
                 <a href="<?php echo BASE_URL; ?>seo&act=list">
                     <i class="fa fa-circle-o"></i> <span>SEO</span> <!--<small class="badge pull-right bg-green">new</small>-->            </a>
@@ -128,11 +130,13 @@
                 <a href="<?php echo BASE_URL; ?>text&act=list">
                     <i class="fa fa-circle-o"></i> <span>Text</span> <!--<small class="badge pull-right bg-green">new</small>-->            </a>
             </li>  
+
             <li>
                 <a href="index.php?mod=banner&act=index">
                     <i class="fa fa-angle-double-right"></i> Banner
                 </a>
             </li>            
+<?php } ?>
           </ul>
         </li>
     </ul>
