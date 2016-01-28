@@ -999,8 +999,7 @@ font-size: 14px;
 #menu_bar li ul.multi-level{
   width: 250px;
 }
-ul.item-list li{
-  height: 120px;
+ul.item-list li{  
 }
 ul.item-list li .item{
   height: 165px;

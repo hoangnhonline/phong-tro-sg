@@ -184,11 +184,17 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <?php if($object_type == 1){ ?>
-              <li role="presentation" class="active"><a href="#photo-of-room" aria-controls="photo-of-room" role="tab" data-toggle="tab">Hình của phòng</a></li>
+              <li role="presentation" class="active"><a href="#photo-of-room" aria-controls="photo-of-room" role="tab" data-toggle="tab">Hình phòng</a></li>
+              <?php if($detail['video_url']) { ?>
+              <li role="presentation"><a href="#video-of-room" aria-controls="video-of-room" role="tab" data-toggle="tab">Video phòng</a></li>
+              <?php } ?>
               <?php } ?>
               <li role="presentation" 
               <?php if($object_type == 2 || $object_type == 3) echo 'class="active"'; ?>
-              ><a href="#photo-of-house" aria-controls="photo-of-house" role="tab" data-toggle="tab">Hình của nhà</a></li>
+              ><a href="#photo-of-house" aria-controls="photo-of-house" role="tab" data-toggle="tab">Hình nhà</a></li>
+              <?php if($houseDetail['video_url']) { ?>
+              <li role="presentation"><a href="#video-of-house" aria-controls="map" role="tab" data-toggle="tab">Video nhà</a></li>
+              <?php } ?>
               <li role="presentation"><a href="#map" aria-controls="map" role="tab" data-toggle="tab">Vị trí bản đồ</a></li>
             </ul>
           
@@ -230,7 +236,9 @@
                 </div>
               </div><!-- end /.tab-pane -->
               <?php } ?>
-              
+              <div role="tabpanel" class="tab-pane fade " id="video-of-room">
+                <?php echo $detail['video_url']; ?>
+              </div>
               <div role="tabpanel" class="tab-pane fade <?php if($object_type == 2 || $object_type == 3) echo 'in active'; ?>" id="photo-of-house">
                   <?php if(!empty($imageHouseArr)) { ?>
                   <div id="myCarousel2" class="carousel slide" data-ride="carousel">
@@ -266,7 +274,11 @@
                   </div>
                 <?php } ?>
               </div><!-- end /.tab-pane -->
-              
+              <?php if($houseDetail['video_url']){ ?>
+              <div role="tabpanel" class="tab-pane fade " id="video-of-house">
+                <?php echo $houseDetail['video_url']; ?>
+              </div>
+              <?php } ?>
               <div role="tabpanel" class="tab-pane fade" id="map">
                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13182.74263649889!2d106.6997296538663!3d10.7919373432754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528caacaa1abf%3A0x99f3f95a29b3c119!2zxJBpbmggVGnDqm4gSG_DoG5nLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1447054505080" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
                 
@@ -289,14 +301,14 @@
               <ul class="item-list mt20">
                 <li class="col-xs-12">
                   <div class="item">
-                    <div class="thumb"><img class="lazy" data-original="<?php echo $detailMod['image_url']; ?>" alt="" class="img-thumbnail"></div>
+                    <div class="thumb"><img class="lazy" style="width:150px !important" data-original="<?php echo $detailMod['image_url']; ?>" alt=""></div>
                     <div class="body-text">
                       <p class="name"><?php echo $detailMod['name']; ?></p>
                       <p class="tel"><a href="#"><?php echo $detailMod['phone']; ?></a></p>
                       <p></p>
                     </div>
                   </div>
-                </li>                
+                </li>    
               </ul>
               <div class="clearfix"></div>  
             </div>

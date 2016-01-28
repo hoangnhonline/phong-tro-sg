@@ -35,40 +35,19 @@ $arrContractServiceMonth['type'] = 1;
 $arrContractServiceMonth['price'] = $price_thue_phong;
 $arrContractServiceMonth['total_price'] = $price_thue_phong;
 $arrContractServiceMonth['amount'] = 1;
+$arrContractServiceMonth['notes'] = $_POST['notes_room_fee'];
 $model->insert('contract_service_month', $arrContractServiceMonth);
 
 // process service chi so
-$arrCu = $_POST['chi_so_cu'];
-$arrMoi = $_POST['chi_so_moi'];
+//$arrCu = $_POST['chi_so_cu'];
+//$arrMoi = $_POST['chi_so_moi'];
 $arrServiceIdChiSo = $_POST['service_id_chiso'];
-$service_id_total_price = $_POST['service_id_total_price'];
-$service_id_chi_so_price = $_POST['service_id_chi_so_price'];
-
-$arrContractServiceMonth = array();
-
-if(!empty($arrServiceIdChiSo)){
-	foreach ($arrServiceIdChiSo as $k => $service_id) {
-		$arrContractServiceMonth['doanhthu_id'] = $doanhthu_id;
-		$arrContractServiceMonth['service_id'] = $service_id;
-		$arrContractServiceMonth['type'] = 2;
-		$arrContractServiceMonth['chi_so_cu'] = $arrCu[$k];
-		$arrContractServiceMonth['chi_so_moi'] = $arrMoi[$k];
-		$arrContractServiceMonth['price'] = $service_id_chi_so_price[$k];
-		$arrContractServiceMonth['total_price'] = $service_id_total_price[$k];
-		$arrContractServiceMonth['amount'] = $arrMoi[$k] - $arrCu[$k];	
-		$model->insert('contract_service_month', $arrContractServiceMonth);
-		$arrContractServiceMonth = array();
-	}
-}
-
-
-
-
 //process service fee
 $arrContractServiceMonth = array();
 
 $arrServiceId = $_POST['service_id'];
 $arrServiceFee = $_POST['service_fee'];
+$arrServiceNotes = $_POST['service_notes'];
 
 if(!empty($arrServiceId)){
 	foreach ($arrServiceId as $key => $service_id) {
@@ -78,9 +57,10 @@ if(!empty($arrServiceId)){
 		$arrContractServiceMonth['chi_so_cu'] = 0;
 		$arrContractServiceMonth['chi_so_moi'] = 0;
 		$arrContractServiceMonth['type'] = 2;
-		$arrContractServiceMonth['price'] = $arrServiceFee[$service_id];
-		$arrContractServiceMonth['total_price'] = $arrServiceFee[$service_id];
-		$arrContractServiceMonth['amount'] = 1;	
+		$arrContractServiceMonth['price'] = 0;
+		$arrContractServiceMonth['total_price'] = str_replace(",", "", $arrServiceFee[$key]);
+		$arrContractServiceMonth['amount'] = 0;	
+		$arrContractServiceMonth['notes'] = $arrServiceNotes[$key];
 		$model->insert('contract_service_month', $arrContractServiceMonth);
 		$arrContractServiceMonth = array();
 	}
@@ -94,15 +74,15 @@ $arrConId = $_POST['convenient_id'];
 $arrConFee = $_POST['convenient_fee'];
 
 if(!empty($arrConId)){
-	foreach ($arrConId as $key => $convenient_id) {
+	foreach ($arrConId as $h => $convenient_id) {
 		$arrContractConMonth = array();
 		$arrContractConMonth['doanhthu_id'] = $doanhthu_id;
 		$arrContractConMonth['service_id'] = $convenient_id;
 		$arrContractConMonth['chi_so_cu'] = 0;
 		$arrContractConMonth['chi_so_moi'] = 0;
 		$arrContractConMonth['type'] = 3;
-		$arrContractConMonth['price'] = $arrConFee[$convenient_id];
-		$arrContractConMonth['total_price'] = $arrConFee[$convenient_id];
+		$arrContractConMonth['price'] = 0;
+		$arrContractConMonth['total_price'] = str_replace(",", "", $arrConFee[$convenient_id]);
 		$arrContractConMonth['amount'] = 1;	
 		$model->insert('contract_service_month', $arrContractConMonth);
 		$arrContractConMonth = array();

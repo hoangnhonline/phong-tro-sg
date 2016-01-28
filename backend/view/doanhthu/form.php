@@ -1,10 +1,22 @@
 <?php
-
+$arrDetailDoanhThu = $arrDetailTienIch = array();
 $contract_id = isset($_GET['contract_id']) ? (int) $_GET['contract_id'] : 0;
 $detail = $model->getDetail("contract",$contract_id);
 $object_type = $detail['object_type'];
 $object_id = $detail['object_id'];
-
+$id = (int) $_GET['id'];
+if($id > 0){
+    $rs = mysql_query("SELECT * FROM contract_service_month WHERE doanhthu_id = $id");
+    while($row = mysql_fetch_assoc($rs)){
+        if($row['type'] != 3){
+            $arrDetailDoanhThu[$row['service_id']] = $row;
+        }else{
+            $arrDetailTienIch[$row['service_id']] = $row;
+        }
+    }
+}
+//echo "<pre>";
+//print_r($arrDetailDoanhThu);die;
 if($object_type == 1){
     $detailObject = $model->getDetail('objects', $object_id);
     $house_id = $detailObject['house_id'];
@@ -60,8 +72,11 @@ $conSelectedArr = $model->getContractCon($contract_id);
                     </div>                    
                     <div class="form-group">
                         <label for="name">Tiền thuê</label>
-                        <input class="form-control" readonly="true" name="price" value="<?php echo number_format($detail['price']); ?>" />
-                        <input type="hidden" class='total' value="<?php echo $detail['price']; ?>"> 
+                        <input class="form-control total number" name="price" value="<?php echo !empty($arrDetailDoanhThu) ? $arrDetailDoanhThu[9999]['total_price'] : number_format($detail['price']); ?>" />                        
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Ghi chú về tiền thuê</label>
+                        <input class="form-control" name="notes_room_fee" value="<?php echo !empty($arrDetailDoanhThu) ? $arrDetailDoanhThu[9999]['notes'] : ""; ?>" />                        
                     </div>
                     <?php if($object_type == 1){ ?>
                     <fieldset>
@@ -76,57 +91,23 @@ $conSelectedArr = $model->getContractCon($contract_id);
 
                             <p style="font-weight:bold;font-size:15px;text-transform:uppercase;background-color:#CCC;padding:5px">
                                 <?php echo $model->getNameById("services", $value['service_id']); ?>
-                            </p>
-                            <?php if($value['cal_type'] == 1){ ?>
-                            Tính theo phòng : <span class="price"><?php echo number_format($arrServiceHouse[$value['service_id']]['price']); ?></span>
-                            <input type="hidden" name="service_id[]" value="<?php echo $value['service_id']; ?>">
-                            <input type="hidden" class="total" name="service_fee[<?php echo $value['service_id']; ?>]" value="<?php echo $arrServiceHouse[$value['service_id']]['price']; ?>">
-                            <?php } ?>
-                            <?php if($value['cal_type'] == 2){ ?>
-                            <input type="hidden" name="service_id[]" value="<?php echo $value['service_id']; ?>">
-                            Tính theo số người : <span class="price"><?php echo number_format($arrServiceHouse[$value['service_id']]['price']); ?> x <?php echo $detail['no_person']?> = <?php echo number_format($arrServiceHouse[$value['service_id']]['price']*$detail['no_person']);?></span>
-                            <input type="hidden" class="total" name="service_fee[<?php echo $value['service_id']; ?>]" value="<?php echo ($arrServiceHouse[$value['service_id']]['price']*$detail['no_person']);?>">
-                            <?php } ?>
-
-                            <?php if($value['cal_type'] == 3){ ?>
-                            <h4>Tính theo số lượng sử dụng</h4><br>
+                            </p>                            
                             <div class='row'>
 
-                               
-                                <div class="col-md-5">
+                               <input type="hidden" name="service_id[]" value="<?php echo $value['service_id']; ?>">
+                                <div class="col-md-6">
                                     <div class='form-group'>                                
-                                        <label>Chỉ số cũ</label>
-                                        <input type="text" class="form-control chiso" id="chi_so_cu_<?php echo $value['service_id']; ?>" name="chi_so_cu[]">
+                                        <label>Tổng tiền</label>
+                                        <input type="text" class="form-control number total" name="service_fee[]" value="<?php echo !empty($arrDetailDoanhThu) ? $arrDetailDoanhThu[$value['service_id']]['total_price'] : ""; ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class='form-group'>                                
-                                        <label>Chỉ số mới</label>
-                                        <input type="text" class="form-control chiso" id="chi_so_moi_<?php echo $value['service_id']; ?>" name="chi_so_moi[]">
+                                        <label>Ghi chú / Công thức</label>
+                                        <input type="text" class="form-control" name="service_notes[]" value="<?php echo !empty($arrDetailDoanhThu) ? $arrDetailDoanhThu[$value['service_id']]['notes'] : ""; ?>">
                                     </div>
-                                </div>
-                                <div class="col-md-2"><br>
-                                    <a class="btn btn-default btnCal" data-value="<?php echo $value['service_id']; ?>">Thành tiền</a>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class='form-group'>                                
-                                        <label>Đơn giá</label>
-                                        <span class="price"><?php echo number_format($arrServiceHouse[$value['service_id']]['price']); ?></span>
-                                        <input type="hidden" id='don_gia_<?php echo $value['service_id']; ?>' value='<?php echo $arrServiceHouse[$value['service_id']]['price']; ?>'>
-                                    </div>
-                                </div>
-                                <div class='col-md-12' style="display:none;" id="div_total_<?php echo $value['service_id']; ?>">
-                                    <div class='form-group'>                                
-                                        <label>Thành tiền</label>    
-                                        <span class="price" id="total_span_<?php echo $value['service_id']; ?>"></span>                                
-                                        <input type="hidden" class="total" id="total_<?php echo $value['service_id']; ?>" name="total[]">
-                                        <input type="hidden" name="service_id_chiso[]" value="<?php echo $value['service_id']; ?>">
-                                        <input type="hidden" name="service_id_chi_so_price[]" value="<?php echo $arrServiceHouse[$value['service_id']]['price']; ?>">
-                                        <input type="hidden" id="total_price_<?php echo $value['service_id']; ?>" name="service_id_total_price[]" value="<?php echo $arrServiceHouse[$value['service_id']]['price']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
+                                </div>                                
+                            </div>                            
                         </div>
                         <?php }?>
                     </fieldset>
@@ -138,9 +119,10 @@ $conSelectedArr = $model->getContractCon($contract_id);
                             
                         ?>
                         <div class="col-md-12" style="border:1px solid #CCC; padding:10px;margin-bottom:10px">                                                     
-                            <?php echo $model->getNameById("convenient", $value['convenient_id']); ?> : <span class="price"><?php echo number_format($conArr[$value['convenient_id']]['price']); ?></span>
-                            <input type="hidden" name="convenient_id[]" value="<?php echo $value['convenient_id']; ?>">
-                            <input type="hidden" class="total" name="convenient_fee[<?php echo $value['convenient_id']; ?>]" value="<?php echo $conArr[$value['convenient_id']]['price']; ?>">
+                            <label class="col-md-6"><?php echo $model->getNameById("convenient", $value['convenient_id']); ?> :</label>
+                            <div class="col-md-6"><input type="text" class="total form-control total number" name="convenient_fee[<?php echo $value['convenient_id']; ?>]" value="<?php echo !empty($arrDetailTienIch) ? $arrDetailTienIch[$value['service_id']]['total_price'] : $conArr[$value['convenient_id']]['price']; ?>">
+                            <input type="hidden" name="convenient_id[]" value="<?php echo $value['convenient_id']; ?>"></div>
+                            
                           
                         </div>
                         <?php }?>
@@ -164,7 +146,7 @@ $conSelectedArr = $model->getContractCon($contract_id);
                     </div>
                 </div><!-- /.box-body -->                
                 
-                <div class="box-footer" style="display:none;" id="div_footer">
+                <div class="box-footer" id="div_footer">
                      <button class="btn btn-primary btnSave" type="submit">Save</button>
                      <button class="btn btn-primary" type="reset" onclick="location.href='index.php?mod=doanhthu&act=list&contract_id=<?php echo $contract_id; ?>'">Cancel</button>
                 </div>
@@ -178,6 +160,7 @@ $conSelectedArr = $model->getContractCon($contract_id);
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
+    $('input.number').number(true);
     $('.btnCal').click(function(){
         var id = $(this).attr('data-value');
         if($('#chi_so_cu_' + id).val() == '' || $('#chi_so_moi_' + id).val() == ''){
@@ -196,25 +179,18 @@ $(document).ready(function(){
         $('#div_total_' + id).show();
     });
     $('#btnTinhTien').click(function(){
-        var countEmpty = 0;
-        $('input.chiso').each(function(){
-            if($(this).val() == ''){
-                countEmpty++;
+        total = 0;
+        $('input.total').each(function(){
+            if($(this).val()!=''){
+                var value = parseInt($(this).val());
+                console.log(value);
+                total = total + value;
             }
         });
-        if(countEmpty > 0){
-            alert('Vui lòng nhập đầy đủ chỉ số cũ và mới'); return false;
-        }else{
-            $('.btnCal').click();
-            var total = 0;
-            $('input.total').each(function(){
-                var value = parseInt($(this).val());
-                total = total + value;
-            });
-            $('#tien_phai_thu, #cong_no').val(total);            
-            $('#div_thanh_tien, #div_footer').show();
-
-        }
+        $('#tien_phai_thu, #cong_no').val(total);            
+      
+        $('#div_thanh_tien').show();
+        
     });
     $('#tien_nhan').keyup(function(){
         var tien_phai_thu = $('#tien_phai_thu').val();

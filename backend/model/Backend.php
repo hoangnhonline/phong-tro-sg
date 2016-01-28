@@ -2,9 +2,9 @@
 //ini_set('display_errors', '1');
 class Backend {
     function __construct() {
-		if($_SERVER['SERVER_NAME']=='localhost'){
+		if($_SERVER['SERVER_NAME']=='phongtro.dev'){
             mysql_connect('localhost', 'root', 'root') or die("Can't connect to server");
-               mysql_select_db('phongtro_sg') or die("Can't connect database");
+               mysql_select_db('phongtrosg_com_8c') or die("Can't connect database");
         }else{
             mysql_connect('localhost', 'phongtrosgcom8c', '789424dc67cf9348b') or die("Can't connect to server");
             mysql_select_db('phongtrosg_com_8c') or die("Can't connect database");  
